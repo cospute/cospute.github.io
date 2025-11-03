@@ -1,13 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.card');
+    const cardWrappers = document.querySelectorAll('.card-wrapper');
     const modal = document.getElementById('modal');
     const modalBody = document.getElementById('modal-body');
     const closeBtn = document.querySelector('.close');
 
-    // Open modal when card is clicked
-    cards.forEach(card => {
-        card.addEventListener('click', function() {
-            const postId = this.getAttribute('data-post-id');
+    // Open modal when card or title is clicked
+    cardWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function() {
+            const card = this.querySelector('.card');
+            const postId = card.getAttribute('data-post-id');
             const postContent = document.getElementById(postId);
             
             if (postContent) {
