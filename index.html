@@ -1,24 +1,24 @@
 ---
 layout: default
 ---
-
 <div class="container">
-    <header>
-        <h1>{{ site.title }}</h1>
+    <header class="cospute-header">
+        <div class="header-content">
+            <h1 class="header-title">{{ site.title }}</h1>
+            <p class="header-description">Explore a curated collection of knowledge, articles, and insights on various topics. Dive in and discover something new!</p>
+        </div>
+        <div class="header-image">
+            </div>
     </header>
-
     <div class="cards-grid">
         {% for item in site.q %}
         <div class="card-wrapper">
             <div class="card" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
-                <!-- Empty card - content area -->
-            </div>
+                </div>
             <p class="card-title">{{ item.title }}</p>
         </div>
         {% endfor %}
     </div>
-
-    <!-- Modal for displaying post content -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -26,8 +26,6 @@ layout: default
         </div>
     </div>
 </div>
-
-<!-- Hidden div to store post contents -->
 <div style="display: none;">
     {% for item in site.q %}
     <div id="{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
