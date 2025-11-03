@@ -9,11 +9,11 @@ layout: default
 
     <div class="cards-grid">
         {% for post in site.posts %}
-        <div class="card" data-post-id="{{ post.id | slugify }}">
-            <div class="card-content">
-                <h3>{{ post.title }}</h3>
-                <p class="card-description">{{ post.excerpt | strip_html | truncate: 100 }}</p>
+        <div class="card-wrapper">
+            <div class="card" data-post-id="{{ post.id | slugify }}">
+                <!-- Empty card - content area -->
             </div>
+            <p class="card-title">{{ post.title }}</p>
         </div>
         {% endfor %}
     </div>
