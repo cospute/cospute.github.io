@@ -8,12 +8,12 @@ layout: default
     </header>
 
     <div class="cards-grid">
-        {% for post in site.posts %}
+        {% for item in site.q %}
         <div class="card-wrapper">
-            <div class="card" data-post-id="{{ post.id | slugify }}">
+            <div class="card" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
                 <!-- Empty card - content area -->
             </div>
-            <p class="card-title">{{ post.title }}</p>
+            <p class="card-title">{{ item.title }}</p>
         </div>
         {% endfor %}
     </div>
@@ -29,10 +29,10 @@ layout: default
 
 <!-- Hidden div to store post contents -->
 <div style="display: none;">
-    {% for post in site.posts %}
-    <div id="{{ post.id | slugify }}" class="post-content-hidden">
-        <h1>{{ post.title }}</h1>
-        {{ post.content }}
+    {% for item in site.q %}
+    <div id="{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
+        <h1>{{ item.title }}</h1>
+        {{ item.content }}
     </div>
     {% endfor %}
 </div>
