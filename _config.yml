@@ -1,0 +1,21 @@
+title: My Card Gallery
+description: A grid of content cards
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # your site's URL
+
+# Build settings
+markdown: kramdown
+permalink: /:title/
+
+# Collections
+collections:
+  posts:
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: "_posts"
+      type: "posts"
+    values:
+      layout: "default"
