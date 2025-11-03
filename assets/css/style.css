@@ -5,11 +5,10 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: #0a0a0a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #1a1a1a;
     min-height: 100vh;
     padding: 20px;
-    color: #e0e0e0;
 }
 
 .container {
@@ -23,12 +22,12 @@ header {
 }
 
 header h1 {
-    color: #ffffff;
+    color: #fff;
     font-size: 2.5rem;
     font-weight: 300;
-    letter-spacing: 2px;
 }
 
+/* Grid Layout */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -37,57 +36,32 @@ header h1 {
 }
 
 .card-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card-wrapper:hover {
+    transform: scale(1.05);
 }
 
 .card {
     width: 100%;
     aspect-ratio: 1.5;
-    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-    border: 1px solid #333;
+    background: #2a2a2a;
+    border: 1px solid transparent;
     border-radius: 8px;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-/* Subtle gradient overlay effect */
-.card::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.03) 100%);
-    pointer-events: none;
-}
-
-.card-wrapper:hover .card {
-    transform: scale(1.05);
-    border-color: #555;
-    background: linear-gradient(135deg, #1f1f1f 0%, #2f2f2f 100%);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .card-title {
     margin-top: 15px;
-    color: #b0b0b0;
+    color: #aaa;
     font-size: 1.1rem;
     text-align: center;
-    font-weight: 400;
-    transition: color 0.3s ease;
-    line-height: 1.4;
-    max-width: 90%;
+    line-height: 1.6;
 }
 
-.card-wrapper:hover .card-title {
-    color: #ffffff;
-}
-
-/* Modal Styles */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -97,16 +71,10 @@ header h1 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
 }
 
 .modal-content {
-    background: #1a1a1a;
+    background: #2a2a2a;
     margin: 5% auto;
     padding: 35px;
     width: 90%;
@@ -115,11 +83,101 @@ header h1 {
     overflow-y: auto;
     border-radius: 8px;
     position: relative;
-    animation: slideIn 0.3s;
-    border: 1px solid #333;
 }
 
-/* Custom Scrollbar for Modal */
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Modal Content Styling */
+#modal-body {
+    margin-top: 20px;
+    line-height: 1.8;
+    color: #ccc;
+}
+
+#modal-body h1 {
+    color: #fff;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #444;
+}
+
+#modal-body h2 {
+    color: #fff;
+    margin: 25px 0 15px 0;
+}
+
+#modal-body h3 {
+    color: #ddd;
+    margin: 20px 0 10px 0;
+}
+
+#modal-body p {
+    color: #aaa;
+    margin-bottom: 15px;
+    line-height: 1.7;
+}
+
+#modal-body a {
+    color: #6db3f2;
+    text-decoration: none;
+}
+
+#modal-body a:hover {
+    text-decoration: underline;
+}
+
+#modal-body code {
+    background: #1a1a1a;
+    color: #6db3f2;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+#modal-body pre {
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+#modal-body pre code {
+    padding: 0;
+    background: transparent;
+}
+
+#modal-body blockquote {
+    border-left: 3px solid #444;
+    padding-left: 20px;
+    margin: 20px 0;
+    color: #999;
+    font-style: italic;
+}
+
+#modal-body ul, #modal-body ol {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    color: #aaa;
+}
+
+#modal-body li {
+    margin-bottom: 8px;
+}
+
+/* Scrollbar */
 .modal-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -137,129 +195,7 @@ header h1 {
     background: #555;
 }
 
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.close {
-    color: #666;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 32px;
-    font-weight: 300;
-    cursor: pointer;
-    transition: color 0.3s;
-    line-height: 1;
-}
-
-.close:hover,
-.close:focus {
-    color: #fff;
-}
-
-#modal-body {
-    margin-top: 20px;
-    line-height: 1.8;
-    color: #d0d0d0;
-}
-
-#modal-body h1 {
-    color: #ffffff;
-    margin-bottom: 25px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #333;
-    font-weight: 300;
-    font-size: 2rem;
-}
-
-#modal-body h2 {
-    color: #e0e0e0;
-    margin: 25px 0 15px 0;
-    font-weight: 400;
-}
-
-#modal-body h3 {
-    color: #d0d0d0;
-    margin: 20px 0 10px 0;
-    font-weight: 400;
-}
-
-#modal-body p {
-    color: #b0b0b0;
-    margin-bottom: 15px;
-    line-height: 1.7;
-}
-
-#modal-body a {
-    color: #6db3f2;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-#modal-body a:hover {
-    color: #8dc5f7;
-    text-decoration: underline;
-}
-
-#modal-body code {
-    background: #0a0a0a;
-    color: #6db3f2;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-family: 'Fira Code', 'Courier New', monospace;
-    font-size: 0.9em;
-    border: 1px solid #2a2a2a;
-}
-
-#modal-body pre {
-    background: #0a0a0a;
-    padding: 20px;
-    border-radius: 6px;
-    overflow-x: auto;
-    margin: 20px 0;
-    border: 1px solid #2a2a2a;
-}
-
-#modal-body pre code {
-    border: none;
-    padding: 0;
-    background: transparent;
-    color: #d0d0d0;
-}
-
-#modal-body blockquote {
-    border-left: 3px solid #444;
-    padding-left: 20px;
-    margin: 20px 0;
-    color: #999;
-    font-style: italic;
-}
-
-#modal-body ul, #modal-body ol {
-    margin-bottom: 15px;
-    padding-left: 30px;
-    color: #b0b0b0;
-}
-
-#modal-body li {
-    margin-bottom: 8px;
-}
-
-#modal-body hr {
-    border: none;
-    border-top: 1px solid #333;
-    margin: 30px 0;
-}
-
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
     .cards-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -274,14 +210,6 @@ header h1 {
         width: 95%;
         margin: 10% auto;
         padding: 25px;
-    }
-    
-    .card-title {
-        font-size: 1rem;
-    }
-    
-    #modal-body h1 {
-        font-size: 1.6rem;
     }
 }
 
