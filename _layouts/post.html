@@ -2,11 +2,7 @@
 layout: default
 ---
 
-<div class="container">
-    <header>
-        <h1><a href="{{ '/' | relative_url }}" style="color: #fff; text-decoration: none;">{{ site.title }}</a></h1>
-    </header>
-
+<div class="container post-page-container">
     <div class="cards-grid">
         {% for item in site.q %}
         <div class="card-wrapper">
