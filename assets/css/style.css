@@ -16,6 +16,7 @@ body {
     margin: 0 auto;
 }
 
+/* Original header (if still needed for other layouts, otherwise remove) */
 header {
     text-align: center;
     margin-bottom: 50px;
@@ -25,6 +26,63 @@ header h1 {
     color: #fff;
     font-size: 2.5rem;
     font-weight: 300;
+}
+
+.cospute-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000; /* Fallback */
+    height: 400px; /* Adjust height as needed */
+    margin-bottom: 50px;
+    border-radius: 8px;
+    overflow: hidden; /* To keep image within bounds */
+}
+
+.header-content {
+    flex: 1; /* Takes available space */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Ensure text is above image */
+}
+
+.header-title {
+    color: #fff;
+    font-size: 3.5rem; /* Larger title */
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Shadow for title */
+}
+
+.header-description {
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6); /* Shadow for description */
+    max-width: 500px; /* Limit description width */
+}
+
+.header-image {
+    flex: 0 0 50%; /* Takes 50% of the header width */
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1549748624-949f22557342?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NzEyNjZ8MHwxfHNlYXJjaHw1NXx8bmV0ZmxpeCUyMGJhY2tncm91bmR8ZW58MHx8fHwxNjk5MjI3Mzc2fDA&ixlib=rb-4.0.3&q=80&w=1080'); /* Replace with your desired image */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    /* Overlay for text readability if image is behind text */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+        /* This creates a gradient effect for better text contrast, adjust as needed */
+    }
 }
 
 /* Grid Layout */
@@ -167,7 +225,8 @@ header h1 {
     font-style: italic;
 }
 
-#modal-body ul, #modal-body ol {
+#modal-body ul,
+#modal-body ol {
     margin-bottom: 15px;
     padding-left: 30px;
     color: #aaa;
@@ -197,15 +256,45 @@ header h1 {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .netflix-header {
+        flex-direction: column;
+        height: auto;
+        text-align: center;
+    }
+
+    .header-content {
+        padding: 30px;
+        align-items: center;
+    }
+
+    .header-title {
+        font-size: 2.8rem;
+    }
+
+    .header-description {
+        font-size: 1rem;
+        max-width: 100%;
+    }
+
+    .header-image {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Full width for image */
+        height: 200px; /* Smaller height for image on mobile */
+    }
+
+    .header-image::before {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%);
+    }
+
     .cards-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 30px;
     }
-    
+
     header h1 {
         font-size: 2rem;
     }
-    
+
     .modal-content {
         width: 95%;
         margin: 10% auto;
@@ -214,10 +303,18 @@ header h1 {
 }
 
 @media (max-width: 480px) {
+    .header-title {
+        font-size: 2rem;
+    }
+
+    .header-description {
+        font-size: 0.9rem;
+    }
+
     .cards-grid {
         grid-template-columns: 1fr;
     }
-    
+
     header h1 {
         font-size: 1.6rem;
     }
