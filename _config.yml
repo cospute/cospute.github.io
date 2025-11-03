@@ -5,17 +5,17 @@ url: "" # your site's URL
 
 # Build settings
 markdown: kramdown
-permalink: /:title/
 
 # Collections
 collections:
-  posts:
+  q:
     output: true
+    permalink: /q/:name/
 
 # Defaults
 defaults:
   - scope:
-      path: "_posts"
-      type: "posts"
+      path: "_q"
+      type: "q"
     values:
-      layout: "default"
+      layout: "post"
