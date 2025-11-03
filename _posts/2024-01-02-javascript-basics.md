@@ -13,3 +13,8 @@ JavaScript is the programming language of the web. Let's explore its core concep
 let name = "John";
 const age = 30;
 var isStudent = true;
+```
+
+## Functions
+
+Functions are reusable blocks of code...
