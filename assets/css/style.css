@@ -28,13 +28,15 @@ header {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #f0f;
 }
 
 .logo {
-    font-size: 32px;
+    padding-top: 3px;
+    font-size: 25px;
     font-weight: 700;
     -webkit-text-fill-color:transparent;
-    background:linear-gradient(45deg,#cf49b8,#dfc6dc);
+    background: #e5e5e5;
     -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
