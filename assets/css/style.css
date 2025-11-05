@@ -417,7 +417,7 @@ nav a:hover .social-icon {
     }
 
     .hero {
-    margin-top: 30px;
+        margin-top: 30px;
     }
     
     .hero-title {
@@ -426,6 +426,10 @@ nav a:hover .social-icon {
     
     .hero-description {
         font-size: 14px;
+    }
+
+    .hero-content {
+        max-width: 100%;
     }
     
     .cards-grid {
