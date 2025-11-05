@@ -72,8 +72,8 @@ nav a:hover .social-icon {
     fill: #fff;
 }
 
-/* Hero Section */
 .hero {
+    padding-top: 10%;
     position: relative;
     height: 100vh;
     width: 100%;
