@@ -33,7 +33,9 @@ header {
 .logo {
     font-size: 32px;
     font-weight: 700;
-    color: #e5e5e5;
+    -webkit-text-fill-color:transparent;
+    background:linear-gradient(45deg,#cf49b8,#dfc6dc);
+    -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
     z-index: 1;
