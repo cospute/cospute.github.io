@@ -136,8 +136,10 @@ nav a:hover .social-icon {
     font-size: 64px;
     font-weight: 700;
     margin-bottom: 20px;
-    text-shadow: 3px 3px 8px rgba(0,0,0,0.9);
     line-height: 1.1;
+    -webkit-text-fill-color:transparent;
+    background:linear-gradient(45deg,#7652c5,#3ff);
+    -webkit-background-clip:text;
 }
 
 .hero-description {
