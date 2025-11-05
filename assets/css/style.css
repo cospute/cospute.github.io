@@ -26,37 +26,7 @@ header {
     align-items: flex-start;
     padding: 20px 50px;
     z-index: 1000;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    background: linear-gradient(to bottom,
-        rgba(0,0,0,0.7) 0%,
-        rgba(0,0,0,0.65) 20%,
-        rgba(0,0,0,0.55) 35%,
-        rgba(0,0,0,0.4) 45%,
-        rgba(0,0,0,0.2) 55%,
-        rgba(0,0,0,0.05) 65%,
-        transparent 75%);
-    z-index: -2;
-    pointer-events: none;
-}
-
-header::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 40%, transparent 100%);
-    z-index: -1;
-    pointer-events: none;
+    background: #000;
 }
 
 .logo {
