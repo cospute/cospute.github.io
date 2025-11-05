@@ -345,8 +345,8 @@ nav a:hover .social-icon {
 /* Responsive */
 @media (max-width: 768px) {
     header {
-        padding: 15px 25px;
-        height: 100px;
+        padding: 10px 25px;
+        height: 40px;
     }
     
     .logo {
@@ -395,7 +395,8 @@ nav a:hover .social-icon {
 
 @media (max-width: 480px) {
     header {
-        height: 90px;
+        padding: 5px 25px;
+        height: 30px;
     }
     
     .logo {
