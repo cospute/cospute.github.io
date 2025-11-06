@@ -36,7 +36,7 @@ header {
     font-size: 25px;
     font-weight: 700;
     -webkit-text-fill-color:transparent;
-    background: #faf;
+    background: #fbf;
     -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
@@ -70,7 +70,7 @@ nav a:hover {
 .social-icon {
     width: 24px;
     height: 30px;
-    fill: #faf;
+    fill: #fbf;
     transition: fill .3s;
 }
 
