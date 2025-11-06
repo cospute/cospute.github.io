@@ -69,7 +69,6 @@ nav a:hover {
     width: 24px;
     height: 30px;
     fill: #fff;
-    transition: fill .3s;
 }
 
 nav a:hover .social-icon {
