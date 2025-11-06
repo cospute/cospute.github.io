@@ -36,7 +36,7 @@ header {
     font-size: 25px;
     font-weight: 700;
     -webkit-text-fill-color:transparent;
-    background: #fbf;
+    background:linear-gradient(0deg,#fff,#f5f);
     -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
