@@ -68,12 +68,12 @@ nav a:hover {
 .social-icon {
     width: 24px;
     height: 30px;
-    fill: #777;
+    fill: #fff;
     transition: fill .3s;
 }
 
 nav a:hover .social-icon {
-    fill: #fff;
+    fill: #7194f3;
 }
 
 .hero {
