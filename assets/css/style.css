@@ -35,7 +35,9 @@ header {
     padding-top: 3px;
     font-size: 25px;
     font-weight: 700;
+    -webkit-text-fill-color:transparent;
     background: #fbf;
+    -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
     z-index: 1;
