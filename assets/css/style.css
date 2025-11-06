@@ -36,7 +36,7 @@ header {
     font-size: 25px;
     font-weight: 700;
     -webkit-text-fill-color:transparent;
-    background: #e5e5e5;
+    background: #faf;
     -webkit-background-clip:text;
     letter-spacing: 2px;
     position: relative;
@@ -70,7 +70,7 @@ nav a:hover {
 .social-icon {
     width: 24px;
     height: 30px;
-    fill: #e5e5e5;
+    fill: #faf;
     transition: fill .3s;
 }
 
@@ -360,7 +360,8 @@ nav a:hover .social-icon {
     }
     
     .logo {
-        font-size: 24px;
+        padding-top: 0;
+        font-size: 20px;
     }
     
     nav {
@@ -410,7 +411,7 @@ nav a:hover .social-icon {
     }
     
     .logo {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     nav {
