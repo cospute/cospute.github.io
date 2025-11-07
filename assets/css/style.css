@@ -71,10 +71,6 @@ nav a:hover {
     fill: #fff;
 }
 
-nav a:hover .social-icon {
-    fill: #7194f3;
-}
-
 .hero {
     background-color: #291b43;
     margin-top: 40px;
