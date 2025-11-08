@@ -3,22 +3,30 @@ layout: default
 ---
 
 <div class="container">
-    <div class="cards-grid">
-        {% for item in site.q %}
-        <div class="card-wrapper">
-            <div class="card" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
-                <!-- Empty card - content area -->
-            </div>
-            <p class="card-title">{{ item.title }}</p>
+    <div class="content-wrapper">
+        <!-- Content viewer (hidden by default) -->
+        <div id="content-viewer" class="content-viewer">
+            <button class="close-button" aria-label="Close content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div id="content-body"></div>
         </div>
-        {% endfor %}
-    </div>
 
-    <!-- Modal for displaying post content -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modal-body"></div>
+        <!-- Cards grid -->
+        <div id="cards-container" class="cards-container">
+            <div class="cards-grid">
+                {% for item in site.q %}
+                <div class="card-wrapper" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
+                    <div class="card">
+                        <!-- Empty card - content area -->
+                    </div>
+                    <p class="card-title">{{ item.title }}</p>
+                </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>
