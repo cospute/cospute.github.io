@@ -40,6 +40,8 @@ header {
     letter-spacing: 2px;
     position: relative;
     z-index: 1;
+    text-decoration: none;
+    display: inline-block;
 }
 
 nav {
