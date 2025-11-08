@@ -8,6 +8,10 @@ html, body {
     height: 100%;
 }
 
+a {
+    color: #e5e5e5;
+}
+
 h1, h2, h3 {
     color: #fff;
 }
@@ -261,15 +265,6 @@ nav a:hover {
 #content-body p {
     margin-bottom: 15px;
     line-height: 1.7;
-}
-
-#content-body a {
-    color: #6db3f2;
-    text-decoration: none;
-}
-
-#content-body a:hover {
-    text-decoration: underline;
 }
 
 #content-body code {
