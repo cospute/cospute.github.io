@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentWrapper = document.querySelector('.content-wrapper');
     const closeBtn = document.querySelector('.close-button');
     const header = document.getElementById('header');
-    const mainContent = document.querySelector('.main-content'); // Get the main content element
+    const mainContent = document.querySelector('.main-content');
     const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
 
     // Function to trigger slide-in animation
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     top: mainContentTop - headerHeight,
                     behavior: 'smooth'
                 });
-            } else { // Fallback, in case elements aren't found
+            } else {
                 const headerHeight = header ? header.offsetHeight : 40;
                 window.scrollTo({ top: headerHeight, behavior: 'smooth' });
             }
@@ -129,9 +129,9 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', function() {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(function() {
-            // Re-evaluate layout if needed
-            if (window.innerWidth > 968 && contentViewer.classList.contains('active')) {
-                // Ensure proper layout on larger screens
+            // Ensure cards container is always visible
+            const cardsContainer = document.getElementById('cards-container');
+            if (cardsContainer) {
                 cardsContainer.style.display = '';
             }
         }, 250);
