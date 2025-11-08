@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cardsContainer = document.getElementById('cards-container');
     const contentWrapper = document.querySelector('.content-wrapper');
     const closeBtn = document.querySelector('.close-button');
+    const header = document.getElementById('header');
     const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
 
     // Function to trigger slide-in animation
@@ -34,8 +35,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Scroll to top of content viewer
             contentViewer.scrollTop = 0;
             
-            // Scroll window to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Scroll window to just below the header (top of main content)
+            const headerHeight = header ? header.offsetHeight : 40;
+            window.scrollTo({ top: headerHeight, behavior: 'smooth' });
             
             // Update URL if needed
             if (updateUrl && slug) {
