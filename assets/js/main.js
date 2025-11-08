@@ -44,7 +44,23 @@ document.addEventListener('DOMContentLoaded', function() {
         
         postElements.forEach(element => {
             if (element.getAttribute('data-slug') === slug) {
-                openModal(element.id, slug, false);
+                // Small delay to ensure DOM is fully loaded
+                setTimeout(() => {
+                    openModal(element.id, slug, false);
+                }, 100);
+            }
+        });
+    } 
+    
+    // Alternative: Check if we have a currentPostSlug variable set (from post.html)
+    else if (window.currentPostSlug) {
+        const postElements = document.querySelectorAll('.post-content-hidden');
+        
+        postElements.forEach(element => {
+            if (element.getAttribute('data-slug') === window.currentPostSlug) {
+                setTimeout(() => {
+                    openModal(element.id, window.currentPostSlug, false);
+                }, 100);
             }
         });
     }
