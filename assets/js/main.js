@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const contentWrapper = document.querySelector('.content-wrapper');
     const closeBtn = document.querySelector('.close-button');
     const header = document.getElementById('header');
+    const mainContent = document.querySelector('.main-content'); // Get the main content element
     const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
 
     // Function to trigger slide-in animation
@@ -35,9 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Scroll to top of content viewer
             contentViewer.scrollTop = 0;
             
-            // Scroll window to just below the header (top of main content)
-            const headerHeight = header ? header.offsetHeight : 40;
-            window.scrollTo({ top: headerHeight, behavior: 'smooth' });
+            // Scroll window to bring the top of the main content area just below the header.
+            if (mainContent && header) {
+                const mainContentTop = mainContent.offsetTop;
+                const headerHeight = header.offsetHeight;
+                window.scrollTo({
+                    top: mainContentTop - headerHeight,
+                    behavior: 'smooth'
+                });
+            } else { // Fallback, in case elements aren't found
+                const headerHeight = header ? header.offsetHeight : 40;
+                window.scrollTo({ top: headerHeight, behavior: 'smooth' });
+            }
             
             // Update URL if needed
             if (updateUrl && slug) {
@@ -72,7 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
         postElements.forEach(element => {
             if (element.getAttribute('data-slug') === slug) {
-                showContent(element.id, slug, false);
+                // Use a short timeout to ensure layout is stable before scrolling
+                setTimeout(() => {
+                    showContent(element.id, slug, false);
+                }, 100);
             }
         });
     }
