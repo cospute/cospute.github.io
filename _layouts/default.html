@@ -23,18 +23,16 @@
         </nav>
     </header>
 
-    {% if page.layout != 'post' %}
     <section class="hero">
-        <img src="{{ '/assets/img/hero-cospute.webp' | relative_url }}" alt="Cospute baby alien floating in space" class="hero-image">
+        <img src="{{ '/assets/img/hero-cospute.webp' | relative_url }}" alt="Cospute baby alien floating in space" class="hero-image"/>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text-wrapper">
-                <h2 class="hero-title">What Is Intelligence?</h2>
+                <h1 class="hero-title">What Is Intelligence?</h1>
                 <p class="hero-description">To answer that, we have a method: Keep asking questions, until you can't. You can browse the questions below, edit them, or add new ones!</p>
             </div>
         </div>
     </section>
-    {% endif %}
 
     <main class="main-content">
         {{ content }}
