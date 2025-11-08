@@ -15,10 +15,13 @@ layout: default
     </div>
 
     <!-- Modal for displaying post content -->
-    <div id="modal" class="modal">
+    <div id="modal" class="modal" style="display: block;">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <div id="modal-body"></div>
+            <div id="modal-body">
+                <h1>{{ page.title }}</h1>
+                {{ content }}
+            </div>
         </div>
     </div>
 </div>
@@ -32,8 +35,3 @@ layout: default
     </div>
     {% endfor %}
 </div>
-
-<!-- Store current post data for JavaScript to pick up -->
-<script>
-    window.currentPostSlug = "{{ page.slug }}";
-</script>
