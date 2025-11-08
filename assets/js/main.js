@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.querySelector('.close-button');
     const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
 
+    // Function to trigger slide-in animation
+    function triggerSlideIn() {
+        contentViewer.classList.remove('slide-in');
+        // Force reflow to restart animation
+        void contentViewer.offsetWidth;
+        contentViewer.classList.add('slide-in');
+    }
+
     // Function to show content
     function showContent(postId, slug, updateUrl = true) {
         const postContent = document.getElementById(postId);
@@ -19,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
             contentViewer.classList.add('active');
             cardsContainer.classList.add('collapsed');
             contentWrapper.classList.add('viewing-content');
+            
+            // Trigger slide-in animation
+            triggerSlideIn();
             
             // Scroll to top of content
             contentViewer.scrollTop = 0;
@@ -40,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideContent(updateUrl = true) {
         // Hide content viewer and expand grid
         contentViewer.classList.remove('active');
+        contentViewer.classList.remove('slide-in');
         cardsContainer.classList.remove('collapsed');
         contentWrapper.classList.remove('viewing-content');
         
