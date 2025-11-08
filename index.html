@@ -19,7 +19,7 @@ layout: default
         <div id="cards-container" class="cards-container">
             <div class="cards-grid">
                 {% for item in site.q %}
-                <div class="card-wrapper" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
+                <div class="card-wrapper" data-post-id="post-{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
                     <div class="card">
                         <!-- Empty card - content area -->
                     </div>
@@ -32,11 +32,11 @@ layout: default
 </div>
 
 <!-- Hidden div to store post contents -->
-<div style="display: none;">
+<div style="display: none;" aria-hidden="true">
     {% for item in site.q %}
-    <div id="{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
+    <div id="post-{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
         <h1>{{ item.title }}</h1>
-        {{ item.content }}
+        {{ item.content | replace: 'id="', 'id="hidden-' }}
     </div>
     {% endfor %}
 </div>
