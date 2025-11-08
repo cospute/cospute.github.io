@@ -1,17 +1,45 @@
 ---
+layout: default
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: site.title }}</title>
-    <script>
-        // Redirect to home page with post loaded in modal
-        window.location.href = '{{ "/" | relative_url }}#{{ page.slug }}';
-    </script>
-</head>
-<body>
-    <p>Loading...</p>
-</body>
-</html>
+
+<div class="container">
+    <div class="content-wrapper viewing-content">
+        <!-- Content viewer (visible by default on post pages) -->
+        <div id="content-viewer" class="content-viewer active">
+            <button class="close-button" aria-label="Close content">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div id="content-body">
+                <h1>{{ page.title }}</h1>
+                {{ content }}
+            </div>
+        </div>
+
+        <!-- Cards grid (collapsed by default on post pages) -->
+        <div id="cards-container" class="cards-container collapsed">
+            <div class="cards-grid">
+                {% for item in site.q %}
+                <div class="card-wrapper" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
+                    <div class="card">
+                        <!-- Empty card - content area -->
+                    </div>
+                    <p class="card-title">{{ item.title }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden div to store post contents -->
+<div style="display: none;">
+    {% for item in site.q %}
+    <div id="{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
+        <h1>{{ item.title }}</h1>
+        {{ item.content }}
+    </div>
+    {% endfor %}
+</div>
