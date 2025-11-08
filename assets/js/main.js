@@ -31,18 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
             // Trigger slide-in animation
             triggerSlideIn();
             
-            // Scroll to top of content
+            // Scroll to top of content viewer
             contentViewer.scrollTop = 0;
+            
+            // Scroll window to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             
             // Update URL if needed
             if (updateUrl && slug) {
                 const newUrl = `${baseUrl}/q/${slug}/`;
                 window.history.pushState({ postId: postId, slug: slug }, '', newUrl);
-            }
-            
-            // On mobile, scroll to top
-            if (window.innerWidth <= 968) {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
     }
