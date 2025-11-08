@@ -1,105 +1,114 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Only run modal logic on the home page
-    if (document.querySelector('.cards-grid')) {
-        const cardWrappers = document.querySelectorAll('.card-wrapper');
-        const modal = document.getElementById('modal');
-        const modalBody = document.getElementById('modal-body');
-        const closeBtn = document.querySelector('.close');
-        const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
+    const cardWrappers = document.querySelectorAll('.card-wrapper');
+    const contentViewer = document.getElementById('content-viewer');
+    const contentBody = document.getElementById('content-body');
+    const cardsContainer = document.getElementById('cards-container');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    const closeBtn = document.querySelector('.close-button');
+    const baseUrl = window.location.origin + window.location.pathname.replace(/\/q\/.*$/, '').replace(/\/$/, '');
 
-        // Function to open modal with content
-        function openModal(postId, slug, updateUrl = true) {
-            const postContent = document.getElementById(postId);
-            
-            if (postContent) {
-                modalBody.innerHTML = postContent.innerHTML;
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden';
-                
-                // Update URL if needed
-                if (updateUrl && slug) {
-                    const newUrl = `${baseUrl}/q/${slug}/`;
-                    window.history.pushState({ postId: postId, slug: slug }, '', newUrl);
-                }
-            }
-        }
-
-        // Function to close modal
-        function closeModal(updateUrl = true) {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-            
-            // Update URL back to root if needed
-            if (updateUrl) {
-                window.history.pushState({}, '', baseUrl + '/');
-            }
-        }
-
-        // Check if we're on the home page but with a post path in URL
-        const currentPath = window.location.pathname;
-        const postMatch = currentPath.match(/\/q\/([^\/]+)\/?$/);
+    // Function to show content
+    function showContent(postId, slug, updateUrl = true) {
+        const postContent = document.getElementById(postId);
         
-        if (postMatch) {
-            // Redirect to home page with modal open
-            const slug = postMatch[1];
-            window.location.href = baseUrl + '/#' + slug;
-        }
-
-        // Check for hash on page load (for redirect from direct URL)
-        if (window.location.hash) {
-            const slug = window.location.hash.substring(1);
-            const postElements = document.querySelectorAll('.post-content-hidden');
+        if (postContent) {
+            // Update content
+            contentBody.innerHTML = postContent.innerHTML;
             
-            postElements.forEach(element => {
-                if (element.getAttribute('data-slug') === slug) {
-                    setTimeout(() => {
-                        openModal(element.id, slug);
-                        // Clean up the hash
-                        history.replaceState(null, null, `${baseUrl}/q/${slug}/`);
-                    }, 100);
-                }
-            });
-        }
-
-        // Open modal when card or title is clicked
-        cardWrappers.forEach(wrapper => {
-            wrapper.addEventListener('click', function(e) {
-                e.preventDefault();
-                const card = this.querySelector('.card');
-                const postId = card.getAttribute('data-post-id');
-                const slug = card.getAttribute('data-post-slug');
-                openModal(postId, slug);
-            });
-        });
-
-        // Close modal when X is clicked
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function() {
-                closeModal();
-            });
-        }
-
-        // Close modal when clicking outside of it
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal();
+            // Show content viewer and collapse grid
+            contentViewer.classList.add('active');
+            cardsContainer.classList.add('collapsed');
+            contentWrapper.classList.add('viewing-content');
+            
+            // Scroll to top of content
+            contentViewer.scrollTop = 0;
+            
+            // Update URL if needed
+            if (updateUrl && slug) {
+                const newUrl = `${baseUrl}/q/${slug}/`;
+                window.history.pushState({ postId: postId, slug: slug }, '', newUrl);
             }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && modal.style.display === 'block') {
-                closeModal();
+            
+            // On mobile, scroll to top
+            if (window.innerWidth <= 968) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
-        });
+        }
+    }
 
-        // Handle browser back/forward buttons
-        window.addEventListener('popstate', function(event) {
-            if (event.state && event.state.postId) {
-                openModal(event.state.postId, event.state.slug, false);
-            } else {
-                closeModal(false);
+    // Function to hide content
+    function hideContent(updateUrl = true) {
+        // Hide content viewer and expand grid
+        contentViewer.classList.remove('active');
+        cardsContainer.classList.remove('collapsed');
+        contentWrapper.classList.remove('viewing-content');
+        
+        // Update URL back to root if needed
+        if (updateUrl) {
+            window.history.pushState({}, '', baseUrl + '/');
+        }
+    }
+
+    // Check if we're on a direct post URL
+    const currentPath = window.location.pathname;
+    const postMatch = currentPath.match(/\/q\/([^\/]+)\/?$/);
+    
+    if (postMatch) {
+        // We're on a post page, find and show the corresponding content
+        const slug = postMatch[1];
+        const postElements = document.querySelectorAll('.post-content-hidden');
+        
+        postElements.forEach(element => {
+            if (element.getAttribute('data-slug') === slug) {
+                showContent(element.id, slug, false);
             }
         });
     }
+
+    // Show content when card is clicked
+    cardWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function(e) {
+            e.preventDefault();
+            const postId = this.getAttribute('data-post-id');
+            const slug = this.getAttribute('data-post-slug');
+            showContent(postId, slug);
+        });
+    });
+
+    // Hide content when close button is clicked
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            hideContent();
+        });
+    }
+
+    // Close content with Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && contentViewer.classList.contains('active')) {
+            hideContent();
+        }
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function(event) {
+        if (event.state && event.state.postId) {
+            showContent(event.state.postId, event.state.slug, false);
+        } else {
+            hideContent(false);
+        }
+    });
+
+    // Handle responsive behavior on resize
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            // Re-evaluate layout if needed
+            if (window.innerWidth > 968 && contentViewer.classList.contains('active')) {
+                // Ensure proper layout on larger screens
+                cardsContainer.style.display = '';
+            }
+        }, 250);
+    });
 });
