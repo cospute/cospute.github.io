@@ -226,6 +226,7 @@ nav a:hover {
 }
 
 .modal-content {
+    color: #fff;
     background: #2a2a2a;
     margin: 5% auto;
     padding: 35px;
@@ -259,23 +260,20 @@ nav a:hover {
 }
 
 #modal-body h1 {
-    color: #fff;
     margin-bottom: 25px;
     padding-bottom: 12px;
 }
 
 #modal-body h2 {
-    color: #fff;
     margin: 25px 0 15px 0;
 }
 
 #modal-body h3 {
-    color: #ddd;
     margin: 20px 0 10px 0;
 }
 
 #modal-body p {
-    color: #aaa;
+    color: #ccc;
     margin-bottom: 15px;
     line-height: 1.7;
 }
