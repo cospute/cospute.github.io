@@ -331,15 +331,6 @@ nav a:hover {
 
 .card-wrapper {
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.card-wrapper:hover {
-    transform: scale(1.05);
-}
-
-.cards-container.collapsed .card-wrapper:hover {
-    transform: scale(1.02);
 }
 
 .card {
@@ -348,12 +339,17 @@ nav a:hover {
     background: #2a2a2a;
     border: 1px solid transparent;
     border-radius: 8px;
-    transition: border-color 0.3s ease, background 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
 }
 
-.card:hover {
+.card-wrapper:hover .card {
     border-color: #444;
     background: #333;
+    transform: scale(1.05);
+}
+
+.cards-container.collapsed .card-wrapper:hover .card {
+    transform: scale(1.02);
 }
 
 .card-title {
