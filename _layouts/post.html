@@ -3,35 +3,12 @@ layout: default
 ---
 
 <div class="container post-page-container">
-    <div class="cards-grid">
-        {% for item in site.q %}
-        <div class="card-wrapper">
-            <div class="card" data-post-id="{{ item.id | slugify }}" data-post-slug="{{ item.slug }}">
-                <!-- Empty card - content area -->
-            </div>
-            <p class="card-title">{{ item.title }}</p>
-        </div>
-        {% endfor %}
+    <article class="post-content">
+        <h1>{{ page.title }}</h1>
+        {{ content }}
+    </article>
+    
+    <div class="back-to-grid">
+        <a href="{{ '/' | relative_url }}" class="back-button">← Back to all questions</a>
     </div>
-
-    <!-- Modal for displaying post content -->
-    <div id="modal" class="modal" style="display: block;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div id="modal-body">
-                <h1>{{ page.title }}</h1>
-                {{ content }}
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Hidden div to store post contents -->
-<div style="display: none;">
-    {% for item in site.q %}
-    <div id="{{ item.id | slugify }}" class="post-content-hidden" data-slug="{{ item.slug }}">
-        <h1>{{ item.title }}</h1>
-        {{ item.content }}
-    </div>
-    {% endfor %}
 </div>
