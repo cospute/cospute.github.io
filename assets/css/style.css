@@ -167,7 +167,6 @@ nav a:hover {
     }
 }
 
-/* Main Content Area */
 .main-content {
     min-height: 100vh;
     background: #000;
@@ -179,7 +178,6 @@ nav a:hover {
     margin: 0 auto;
 }
 
-/* Content Wrapper - Split View Layout */
 .content-wrapper {
     display: flex;
     gap: 30px;
@@ -187,7 +185,6 @@ nav a:hover {
     position: relative;
 }
 
-/* Content Viewer (Left Side) */
 .content-viewer {
     display: none;
     flex: 1;
@@ -227,7 +224,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
     color: #aaa;
     z-index: 10;
 }
@@ -236,10 +233,8 @@ nav a:hover {
     background: #333;
     border-color: #555;
     color: #fff;
-    transform: rotate(90deg);
 }
 
-/* Content Styling */
 #content-body {
     color: #ccc;
     line-height: 1.8;
@@ -312,22 +307,18 @@ nav a:hover {
     margin-bottom: 8px;
 }
 
-/* Cards Container (Right Side) */
 .cards-container {
     flex: 1;
-    transition: all 0.3s ease;
 }
 
 .cards-container.collapsed {
     flex: 0 0 320px;
 }
 
-/* Grid Layout */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
-    transition: all 0.3s ease;
 }
 
 .cards-container.collapsed .cards-grid {
@@ -337,15 +328,6 @@ nav a:hover {
 
 .card-wrapper {
     cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-.card-wrapper:hover {
-    transform: scale(1.05);
-}
-
-.cards-container.collapsed .card-wrapper:hover {
-    transform: scale(1.02);
 }
 
 .card {
@@ -354,7 +336,7 @@ nav a:hover {
     background: #2a2a2a;
     border: 1px solid transparent;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .card:hover {
@@ -368,7 +350,6 @@ nav a:hover {
     font-size: 1rem;
     text-align: center;
     line-height: 1.4;
-    transition: all 0.3s ease;
 }
 
 .cards-container.collapsed .card-title {
@@ -376,12 +357,10 @@ nav a:hover {
     margin-top: 8px;
 }
 
-/* When content is viewing */
 .content-wrapper.viewing-content {
     gap: 30px;
 }
 
-/* Scrollbar */
 .content-viewer::-webkit-scrollbar {
     width: 8px;
 }
@@ -399,7 +378,6 @@ nav a:hover {
     background: #555;
 }
 
-/* Responsive */
 @media (max-width: 968px) {
     .content-wrapper {
         flex-direction: column;
