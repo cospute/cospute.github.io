@@ -34,8 +34,8 @@ header {
     padding: 5px 40px;
     z-index: 1000;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     border-bottom: 1px solid #f0f;
 }
 
