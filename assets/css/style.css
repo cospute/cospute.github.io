@@ -33,7 +33,7 @@ header {
     align-items: flex-start;
     padding: 5px 40px;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #f0f;
@@ -192,7 +192,7 @@ nav a:hover {
 .content-viewer {
     display: none;
     flex: 1;
-    background: #1a1a1a;
+    background: #1f1f1f;
     border-radius: 8px;
     padding: 40px;
     position: relative;
